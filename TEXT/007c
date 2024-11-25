@@ -1,0 +1,39 @@
+#include<stdio.h>
+typedef struct number{
+    char ch[25];
+    int a,b,c;
+    char ch1,ch2;
+    int fin;
+}yep;
+int main()
+{
+    yep thx[108];
+    int n,x;
+    int flag,mx=0,an3=0;
+    char buf;
+    scanf("%d",&n);
+
+    for(int i=0;i<n;i++){
+        x=thx[i].fin=0;
+        while( (buf=getchar())!=' ' )
+        {thx[i].ch[x++]=buf;}
+        thx[i].ch[x]='\0';
+        scanf("%d %d %c %c %d",thx[i].ch,&thx[i].a,&thx[i].b,&thx[i].ch1,&thx[i].ch2,&thx[i].c);
+        if(thx[i].a>80&&thx[i].c>=1) thx[i].fin+=8000;
+        if(thx[i].a>85&&thx[i].b>80) thx[i].fin+=4000;
+        if(thx[i].a>90) thx[i].fin+=2000;
+        if(thx[i].a>85&&thx[i].ch2=='Y') thx[i].fin+=1000;
+        if(thx[i].b>80&&thx[i].ch1=='Y') thx[i].fin+=850;
+        while((buf=getchar())!='\n' );
+    }
+    for(int i=0;i<n;i++){
+        if(thx[i].fin>mx){
+            flag=i;
+            mx=thx[i].fin;
+        }
+        an3+=thx[i].fin;
+    }
+    printf("%s\n%d\n%d",thx[flag].ch,thx[flag].fin,an3);
+    scanf("%d",&n);
+    return 0;
+}
